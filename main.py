@@ -16,6 +16,7 @@ class Card():
 
     # lightning
     ZAP = "Zap"
+    THUNDER_STRIKE = "Thunder Strike"
 
     # ice
     COLD_SNAP = "todo"
@@ -147,6 +148,7 @@ defect_default_deck = Deck([
     Card(Card.DEFRAGMENT),
     Card(Card.CAPACITOR),
     Card(Card.CAPACITOR),
+    Card(Card.THUNDER_STRIKE),
 ])
 
 
@@ -154,11 +156,12 @@ if __name__ == '__main__':
     save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
     save_editor = SaveEditor(save_file_path)
 
-    save_editor.update_current_health(500)
-
-    save_editor.set_deck(defect_default_deck)
+    # to debug current file, just exit. The file will be written insede `backups` folder
+    # exit()
 
     # example
+    save_editor.update_current_health(500)
+    save_editor.set_deck(defect_default_deck)
     # save_editor.add_card(Card(Card.LEAP))
 
     save_editor.write_json_to_file()
