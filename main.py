@@ -128,6 +128,10 @@ class SaveEditor():
         self.json_save_data['current_health'] = health
         assert self.json.get('current_health') == health
 
+    def update_max_health(self, health: int = 500):
+        self.json_save_data['max_health'] = health
+        assert self.json.get('max_health') == health
+
     def set_deck(self, deck):
         self.json_save_data["cards"] = deck.to_json()
 
@@ -160,7 +164,8 @@ if __name__ == '__main__':
     # exit()
 
     # example
-    save_editor.update_current_health(500)
+    save_editor.update_current_health()
+    save_editor.update_max_health()
     save_editor.set_deck(defect_default_deck)
     # save_editor.add_card(Card(Card.LEAP))
 
