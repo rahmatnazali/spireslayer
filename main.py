@@ -4,6 +4,8 @@ import json
 import os
 from typing import Optional
 
+from decks import defect_lightning_deck
+
 
 class Card():
     STRIKE = "Strike_B"
@@ -143,22 +145,6 @@ class SaveEditor():
         self.json_save_data["cards"].append(card.to_json())
 
 
-defect_default_deck = Deck([
-    Card(Card.LEAP),
-    Card(Card.LEAP),
-    Card(Card.LEAP),
-    Card(Card.ZAP),
-    Card(Card.ZAP),
-    Card(Card.ZAP),
-    Card(Card.ZAP),
-    Card(Card.DEFRAGMENT),
-    Card(Card.DEFRAGMENT),
-    Card(Card.DEFRAGMENT),
-    Card(Card.DEFRAGMENT),
-    Card(Card.THUNDER_STRIKE),
-])
-
-
 if __name__ == '__main__':
     save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
     save_editor = SaveEditor(save_file_path)
@@ -172,6 +158,6 @@ if __name__ == '__main__':
 
     # For The Defect
     save_editor.update_max_orbs()
-    save_editor.set_deck(defect_default_deck)
+    save_editor.set_deck(defect_lightning_deck)
 
     save_editor.write_json_to_file()
