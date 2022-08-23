@@ -169,8 +169,9 @@ if __name__ == '__main__':
     # example
     save_editor.update_current_health()
     save_editor.update_max_health()
+
+    # For The Defect
     save_editor.update_max_orbs()
     save_editor.set_deck(defect_default_deck)
-    # save_editor.add_card(Card(Card.LEAP))
 
     save_editor.write_json_to_file()
