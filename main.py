@@ -6,7 +6,7 @@ import os
 
 class Card():
     STRIKE = "Strike_B"
-    DEFEBD = "Defend_B"
+    DEFEND = "Defend_B"
     ZAP = "ZAP"
     DUALCAST = "Dualcast"
     LEAP = "Leap"
