@@ -11,6 +11,7 @@ if __name__ == '__main__':
     # example
     save_editor.update_current_health()
     save_editor.update_max_health()
+    save_editor.update_hand_size()
 
     # For The Defect
     save_editor.update_max_orbs()

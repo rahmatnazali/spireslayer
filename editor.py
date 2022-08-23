@@ -88,6 +88,10 @@ class SaveEditor():
         self.json_save_data['max_orbs'] = max_orbs
         assert self.json.get('max_orbs') == max_orbs
 
+    def update_hand_size(self, hand_size: int = 10):
+        self.json_save_data['hand_size'] = hand_size
+        assert self.json.get('hand_size') == hand_size
+
     def set_deck(self, deck):
         self.json_save_data["cards"] = deck.to_json()
 
