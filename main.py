@@ -11,7 +11,7 @@ class Card():
     DUALCAST = "Dualcast"
     LEAP = "Leap"
 
-    def __init__(self, id: str, misc: int = 0, upgrades: int = 0) -> None:
+    def __init__(self, id: str, misc: int = 0, upgrades: int = 1) -> None:
         super().__init__()
         self.id = id
         self.misc = misc
