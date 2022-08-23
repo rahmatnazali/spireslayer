@@ -13,8 +13,15 @@ Use with caution, as it can really ruin the fun. But for me, sometimes I prefer 
 - Edit the `main.py` as you need. You can change your health, build your own deck, etc
 - Go inside the game, pick your prefered character, then on the first encounter, choose `Save & Quit`
 - From the main menu (no need to close the game), just run `main.py`, `python3 main.py`
+  - On each script run, the script will dump the save data BEFORE the modification and save it inside `backups` folder. Just in case you messed up something, you can edit back according to it
 - After that, click `Continue`, and enjoy!
+
+## Note
+
+Currently, there are only configuration for The Defect. But actually if you can already see the save data in JSON you can basically change anything you want, so feel free to modify the code and add your own preference!
+
+It is really just a basic JSON edit.
 
 ## Disclaimer
 
-I got the logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) by sawing his code written with JS. I only re-write it in python and added some feature so that the save data can be programmatically edited.
+I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. What I did is only re-write it in python and added some feature so that the save data can be programmatically edited.
