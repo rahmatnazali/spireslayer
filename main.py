@@ -12,6 +12,7 @@ if __name__ == '__main__':
     save_editor.update_current_health()
     save_editor.update_max_health()
     save_editor.update_hand_size()
+    save_editor.update_energy_per_turn()
 
     # For The Defect
     save_editor.update_max_orbs()
