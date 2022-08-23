@@ -92,7 +92,7 @@ class SaveEditor():
         self.json_save_data['hand_size'] = hand_size
         assert self.json.get('hand_size') == hand_size
 
-    def update_energy_per_turn(self, red: int = 10):
+    def update_energy_per_turn(self, red: int = 20):
         self.json_save_data['red'] = red
         assert self.json.get('red') == red
 
