@@ -32,6 +32,11 @@ class SaveEditor():
             assert content is not None, "Encoded save data is None"
             return content
 
+    def write_json_to_file(self):
+        with open(self.save_file_path, 'wb') as save_file:
+            new_save_data = self.json_to_save()
+            save_file.write(new_save_data)
+
     def base64_encode(self, string):
         return base64.b64encode(string)
 
@@ -74,7 +79,7 @@ class SaveEditor():
 if __name__ == '__main__':
     save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
     save_editor = SaveEditor(save_file_path)
-    save_editor.update_current_health()
 
-    # updated_save_data = editor.json_to_save()
-    # print(updated_save_data)
+    save_editor.update_current_health(500)
+
+    save_editor.write_json_to_file()
