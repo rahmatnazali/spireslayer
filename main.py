@@ -132,6 +132,10 @@ class SaveEditor():
         self.json_save_data['max_health'] = health
         assert self.json.get('max_health') == health
 
+    def update_max_orbs(self, max_orbs: int = 10):
+        self.json_save_data['max_orbs'] = max_orbs
+        assert self.json.get('max_orbs') == max_orbs
+
     def set_deck(self, deck):
         self.json_save_data["cards"] = deck.to_json()
 
@@ -150,8 +154,7 @@ defect_default_deck = Deck([
     Card(Card.DEFRAGMENT),
     Card(Card.DEFRAGMENT),
     Card(Card.DEFRAGMENT),
-    Card(Card.CAPACITOR),
-    Card(Card.CAPACITOR),
+    Card(Card.DEFRAGMENT),
     Card(Card.THUNDER_STRIKE),
 ])
 
@@ -166,6 +169,7 @@ if __name__ == '__main__':
     # example
     save_editor.update_current_health()
     save_editor.update_max_health()
+    save_editor.update_max_orbs()
     save_editor.set_deck(defect_default_deck)
     # save_editor.add_card(Card(Card.LEAP))
 
