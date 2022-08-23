@@ -2,14 +2,23 @@ import base64
 import datetime
 import json
 import os
+from typing import Optional
 
 
 class Card():
     STRIKE = "Strike_B"
     DEFEND = "Defend_B"
-    ZAP = "ZAP"
-    DUALCAST = "Dualcast"
+
     LEAP = "Leap"
+    DUALCAST = "Dualcast"
+    DEFRAGMENT = "Defragment"
+
+    # lightning
+    ZAP = "Zap"
+
+    # ice
+    COLD_SNAP = "todo"
+    BLIZZARD = "todo"
 
     def __init__(self, id: str, misc: int = 0, upgrades: int = 1) -> None:
         super().__init__()
@@ -23,6 +32,24 @@ class Card():
             "misc": self.misc,
             "upgrades": self.upgrades
         }
+
+
+class Deck():
+    def __init__(self, card_list: Optional[list] = None) -> None:
+        super().__init__()
+
+        if card_list is not None:
+            self.card_list = card_list
+        else:
+            self.card_list = []
+
+    def add_card(self, card: Card):
+        self.card_list.append(card)
+
+    def to_json(self):
+        return [
+            card.to_json() for card in self.card_list
+        ]
 
 
 class SaveEditor():
@@ -99,8 +126,25 @@ class SaveEditor():
         self.json_save_data['current_health'] = health
         assert self.json.get('current_health') == health
 
+    def set_deck(self, deck):
+        self.json_save_data["cards"] = deck.to_json()
+
     def add_card(self, card: Card):
         self.json_save_data["cards"].append(card.to_json())
+
+
+defect_default_deck = Deck([
+    Card(Card.LEAP),
+    Card(Card.LEAP),
+    Card(Card.LEAP),
+    Card(Card.ZAP),
+    Card(Card.ZAP),
+    Card(Card.ZAP),
+    Card(Card.ZAP),
+    Card(Card.DEFRAGMENT),
+    Card(Card.DEFRAGMENT),
+    Card(Card.DEFRAGMENT),
+])
 
 
 if __name__ == '__main__':
@@ -108,6 +152,8 @@ if __name__ == '__main__':
     save_editor = SaveEditor(save_file_path)
 
     save_editor.update_current_health(500)
+
+    save_editor.set_deck(defect_default_deck)
 
     # example
     # save_editor.add_card(Card(Card.LEAP))
