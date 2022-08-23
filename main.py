@@ -4,7 +4,7 @@ import json
 import os
 from typing import Optional
 
-from decks import defect_lightning_deck
+from decks import defect_lightning_deck, defect_frost_deck
 
 
 class Card():
@@ -21,8 +21,9 @@ class Card():
     THUNDER_STRIKE = "Thunder Strike"
 
     # ice
-    COLD_SNAP = "todo"
-    BLIZZARD = "todo"
+    COLD_SNAP = "Cold Snap"
+    BLIZZARD = "Blizzard"
+    GLACIER = "Glacier"
 
     def __init__(self, id: str, misc: int = 0, upgrades: int = 1) -> None:
         super().__init__()
@@ -158,6 +159,6 @@ if __name__ == '__main__':
 
     # For The Defect
     save_editor.update_max_orbs()
-    save_editor.set_deck(defect_lightning_deck)
+    save_editor.set_deck(defect_frost_deck)
 
     save_editor.write_json_to_file()
