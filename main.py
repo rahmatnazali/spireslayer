@@ -12,6 +12,7 @@ class Card():
     LEAP = "Leap"
     DUALCAST = "Dualcast"
     DEFRAGMENT = "Defragment"
+    CAPACITOR = "Capacitor"
 
     # lightning
     ZAP = "Zap"
@@ -144,6 +145,8 @@ defect_default_deck = Deck([
     Card(Card.DEFRAGMENT),
     Card(Card.DEFRAGMENT),
     Card(Card.DEFRAGMENT),
+    Card(Card.CAPACITOR),
+    Card(Card.CAPACITOR),
 ])
 
 
