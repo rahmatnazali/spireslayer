@@ -4,6 +4,27 @@ import json
 import os
 
 
+class Card():
+    STRIKE = "Strike_B"
+    DEFEBD = "Defend_B"
+    ZAP = "ZAP"
+    DUALCAST = "Dualcast"
+    LEAP = "Leap"
+
+    def __init__(self, id: str, misc: int = 0, upgrades: int = 0) -> None:
+        super().__init__()
+        self.id = id
+        self.misc = misc
+        self.upgrades = upgrades
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "misc": self.misc,
+            "upgrades": self.upgrades
+        }
+
+
 class SaveEditor():
     def __init__(self, root_path) -> None:
         super().__init__()
@@ -78,11 +99,17 @@ class SaveEditor():
         self.json_save_data['current_health'] = health
         assert self.json.get('current_health') == health
 
+    def add_card(self, card: Card):
+        self.json_save_data["cards"].append(card.to_json())
+
 
 if __name__ == '__main__':
     save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
     save_editor = SaveEditor(save_file_path)
 
     save_editor.update_current_health(500)
+
+    # example
+    # save_editor.add_card(Card(Card.LEAP))
 
     save_editor.write_json_to_file()
