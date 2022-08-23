@@ -5,7 +5,7 @@ if __name__ == '__main__':
     save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
     save_editor = SaveEditor(save_file_path)
 
-    # to debug current file, just exit. The file will be written insede `backups` folder
+    # to debug current file, just exit. The file will be written inside `backups` folder
     # exit()
 
     # example
