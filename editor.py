@@ -16,7 +16,9 @@ class SaveEditor():
         self.json_save_data = self.save_to_json()
 
         # backup current save file data
-        with open(f"backups/{datetime.datetime.now()}.json", "w") as current_save_file:
+        dump_filename = f"backups/{datetime.datetime.now()}.json"
+        print(f"Dumping current save file to {dump_filename}")
+        with open(dump_filename, "w") as current_save_file:
             current_save_file.write(json.dumps(self.json_save_data, indent=2, sort_keys=True))
 
     @property
@@ -38,6 +40,7 @@ class SaveEditor():
             return content
 
     def write_json_to_file(self):
+        print(f"Writing edited save data to {self.save_file_path}")
         with open(self.save_file_path, 'wb') as save_file:
             new_save_data = self.json_to_save()
             save_file.write(new_save_data)
@@ -48,32 +51,31 @@ class SaveEditor():
     def base64_decode(self, string) -> bytes:
         return base64.b64decode(string)
 
-    def save_to_json(self):
-        data: bytes = self.base64_decode(self.encoded_save_data)
+    def save_to_json(self) -> dict:
+        base64_decoded_save_file: bytes = self.base64_decode(self.encoded_save_data)
         json_char_list: list = list()
 
-        for i, value in enumerate(data):
+        for i, obfuscated_data in enumerate(base64_decoded_save_file):
             modulus_index: int = i % len(self.key)
-            xor_result: int = data[i] ^ ord(self.key[modulus_index])
+            xor_result: int = obfuscated_data ^ ord(self.key[modulus_index])
             char_result: str = chr(xor_result)
             json_char_list.append(char_result)
 
-        plain_json = ''.join(json_char_list)
-        return json.loads(plain_json)
+        plain_json_string: str = ''.join(json_char_list)
+        return json.loads(plain_json_string)
 
-    def json_to_save(self):
+    def json_to_save(self) -> bytes:
         assert self.json_save_data is not None, "JSON save data is None"
-        plain_json = json.dumps(self.json_save_data)
-        assert isinstance(plain_json, str)
+        plain_json_string: str = json.dumps(self.json_save_data)
+        assert isinstance(plain_json_string, str)
 
-        encoded_char_list: list = list()
-        for i, value in enumerate(plain_json):
+        decoded_char_list: list = list()
+        for i, plain_data in enumerate(plain_json_string):
             modulus_index: int = i % len(self.key)
-            xor_result: int = ord(value) ^ ord(self.key[modulus_index])
-            encoded_char_list.append(xor_result)
+            xor_result: int = ord(plain_data) ^ ord(self.key[modulus_index])
+            decoded_char_list.append(xor_result)
 
-        final_data = self.base64_encode(bytes(encoded_char_list))
-
+        final_data = self.base64_encode(bytes(decoded_char_list))
         return final_data
 
     def update_current_health(self, health: int = 500):
