@@ -29,4 +29,4 @@ It is really just a basic JSON edit.
 
 ## Disclaimer
 
-I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. What I did is only re-write it in python and added some feature so that the save data can be programmatically edited.
+I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. What I did was only re-write it in python and added some feature so that the save data can be programmatically edited.
