@@ -62,6 +62,9 @@ save_editor.write_json_to_file()
   - On each script run, the script will dump the original save data BEFORE any modification and save it inside `backups` folder. Just in case you messed up something, you can revert the save file 
 - After that, click `Continue`, and enjoy!
 
+![](assets/result-1.jpg)
+![](assets/result-2.jpg)
+
 ## Note
 
 Currently, there are only configuration for The Defect. But actually if you can already see the save data in JSON you can basically change anything you want, so feel free to modify the code and add your own preference!
