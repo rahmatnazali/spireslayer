@@ -60,7 +60,7 @@ save_editor.write_json_to_file()
 - Go inside the game, pick your prefered character, then on the first encounter, choose `Save & Quit`
 - From the main menu (no need to close the game), just run `main.py` with the command `python3 main.py`
   - On each script run, the script will dump the original save data BEFORE any modification and save it inside `backups` folder. Just in case you messed up something, you can revert the save file 
-- After that, click `Continue`, and enjoy!
+- Back to your game and click `Continue`. Enjoy!
 
 ![](assets/result-1.jpg)
 ![](assets/result-2.jpg)
