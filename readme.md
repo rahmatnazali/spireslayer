@@ -13,12 +13,45 @@ Use with caution, as it can really ruin the fun. But for me, sometimes I prefer 
 ## How to
 - Install python3 
 - Inside `main.py`, Change the `save_file_path` according to your game installation so that it points to the *root path* of the autosave file. 
-  - By default it will be inside the default steam folder `..../Steam/steamapps/common/SlayTheSpire/saves`
+  - By default, it will be inside the default steam folder `..../Steam/steamapps/common/SlayTheSpire/saves`
   - I used Linux, so if you use Windows you will need to change the path and make sure it is absolute path
-- Edit the `main.py` as you need. You can change your health, build your own deck, etc
+- Edit the `main.py` as you need. You can change your health, build your own deck, etc. For example:
+
+```python
+from editor import SaveEditor
+from decks import Deck
+from card import Card
+
+# declare a valid path to the save folder
+# On Windows, it will most likely be: "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves"
+save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
+
+# declare a save editor that points to the save_file path
+save_editor = SaveEditor(save_file_path)
+
+# edit whatever you want.
+# here we are making our custom powerful deck for our Defect
+save_editor.set_deck(Deck([
+    Card(Card.GLACIER),
+    Card(Card.GLACIER),
+    Card(Card.GLACIER),
+    Card(Card.DEFRAGMENT),
+    Card(Card.DEFRAGMENT),
+    Card(Card.DEFRAGMENT),
+    Card(Card.BLIZZARD),
+    Card(Card.BLIZZARD),
+    Card(Card.BLIZZARD),
+    Card(Card.BLIZZARD),
+    Card(Card.BLIZZARD),
+]))
+
+# After customization is finished, call this method to rewrite the save data back to where it belongs
+save_editor.write_json_to_file()
+```
+
 - Go inside the game, pick your prefered character, then on the first encounter, choose `Save & Quit`
 - From the main menu (no need to close the game), just run `main.py` with the command `python3 main.py`
-  - On each script run, the script will dump the save data BEFORE the modification and save it inside `backups` folder. Just in case you messed up something, you can edit back according to it
+  - On each script run, the script will dump the original save data BEFORE any modification and save it inside `backups` folder. Just in case you messed up something, you can revert the save file 
 - After that, click `Continue`, and enjoy!
 
 ## Note
