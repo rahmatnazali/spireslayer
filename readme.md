@@ -1,8 +1,6 @@
 # Autosave editor for [Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/)
 
-The code has been written as modular as possible for easy customization.
-
-Use with caution, as it can really ruin the fun. But for me, sometimes I prefer to extract all the fun as fast as possible and then begone with my life.
+The code has been written as modular as possible for easy customization. Use with caution, as it can really ruin the fun. 
 
 ## How the script works
 - It starts by finding an autosave file, usually named with this format: `<Name of the character>.autosave`, for example [DEFECT.autosave](saves/DEFECT.autosave).
