@@ -4,7 +4,7 @@ The code has been written as modular as possible for easy customization. Use wit
 
 ## How the script works
 - It starts by finding an autosave file, usually named with this format: `<Name of the character>.autosave`, for example [DEFECT.autosave](saves/DEFECT.autosave).
-- It will then try to decrypt the save data and convert it to an editable JSON format [like so](backups/2023-01-19 07:13:11.270793.json).
+- It will then try to decrypt the save data and convert it to an editable JSON format [like so]("backups/2023-01-19 07:13:11.270793.json").
 - You can then edit the save file as you want via `main.py`
 - The script will then write it back to the obfuscated autosave file format
 
