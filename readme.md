@@ -22,14 +22,13 @@ from editor import SaveEditor
 from decks import Deck
 from card import Card
 
-# declare a valid path to the save folder
-# On Windows, it will most likely be: "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves"
-save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
+# Declare a valid path to the save folder. On Windows, you should be able to use this one.
+save_file_path = "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves"
 
-# declare a save editor that points to the save_file path
+# Declare a save editor that points to the save_file path
 save_editor = SaveEditor(save_file_path)
 
-# edit whatever you want.
+# Edit whatever you want.
 # here we are making our custom powerful deck for our Defect
 save_editor.set_deck(Deck([
     Card(Card.GLACIER),
@@ -45,7 +44,16 @@ save_editor.set_deck(Deck([
     Card(Card.BLIZZARD),
 ]))
 
-# After customization is finished, call this method to rewrite the save data back to where it belongs
+# or increase our Defect's max orb
+save_editor.update_max_orbs()
+
+# or anything that can be adjustable to your need
+save_editor.update_current_health()
+save_editor.update_max_health()
+save_editor.update_hand_size()
+save_editor.update_energy_per_turn()
+
+# After customization is finished, don't forget call this method to rewrite the save data back to where it belongs
 save_editor.write_json_to_file()
 ```
 
