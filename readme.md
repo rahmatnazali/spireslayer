@@ -67,7 +67,7 @@ Currently, there are only configuration for The Defect.
 But actually if you can already see the save data in JSON you can change anything you want, 
 so feel free to modify the code and add your own preference!
 
-Again, refer to the [example of the save file](backups/2023-01-19 07:13:11.270793.json). It is really just a simple JSON edit.
+Again, refer to the [example of the save file](backups/2023-01-19%2007:13:11.270793.json). It is really just a simple JSON edit.
 
 ## Disclaimer
 
