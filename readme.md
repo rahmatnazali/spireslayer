@@ -1,4 +1,4 @@
-Autosave editor for [Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/).
+# Autosave editor for [Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/)
 
 The code has been written as modular as possible for easy customization.
 
