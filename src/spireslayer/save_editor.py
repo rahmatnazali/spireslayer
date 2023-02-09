@@ -8,10 +8,13 @@ from .decks import Deck
 
 
 class SaveEditor(object):
-    def __init__(self, save_file_path: str) -> None:
+    def __init__(self,
+                 save_file_path: str = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\saves",
+                 key: str = "key"
+                 ) -> None:
         super().__init__()
         self.root_path = save_file_path
-        self.key = "key"
+        self.key = key
         self.save_file_path = self.find_autosave_file()
         self.encoded_save_data: str = self.load_encoded_save_data_from_file()
         self.json_save_data = self.save_to_json()
