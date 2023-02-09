@@ -19,12 +19,6 @@ class SaveEditor(object):
         self.encoded_save_data: str = self.load_encoded_save_data_from_file()
         self.json_save_data = self.save_to_json()
 
-        # backup current save file data
-        dump_filename = f"backups/{datetime.datetime.now()}.json"
-        print(f"Dumping current save file to {dump_filename}")
-        with open(dump_filename, "w") as current_save_file:
-            current_save_file.write(json.dumps(self.json_save_data, indent=2, sort_keys=True))
-
     def set_json(self, json_dict: dict):
         self.json_save_data = json_dict
 
