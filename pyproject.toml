@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spireslayer"
-version = "0.0.3"
+version = "0.0.4"
 keywords = ["slay-the-spire", "slay", "spire", "save", "editor"]
 authors = [
   { name="Rahmat Nazali Salimi", email="rahmatnazali95@gmail.com" },
