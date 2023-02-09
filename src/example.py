@@ -1,9 +1,10 @@
 from decks import defect_frost_deck
 from editor import SaveEditor
 
+
 if __name__ == '__main__':
-    save_file_path = "/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire/saves"
-    save_editor = SaveEditor(save_file_path)
+    save_editor = SaveEditor(save_file_path=
+                             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\saves")
 
     # In here, you can do whatever you want on your save file
     save_editor.update_current_health()
