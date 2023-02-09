@@ -13,3 +13,13 @@ def test_card_custom_value():
     assert card.id == "some_card"
     assert card.misc == 5
     assert card.upgrades == 5
+
+
+def test_card_to_json():
+    card = Card("a_card")
+    card_json = card.to_json()
+    assert card_json == {
+        "id": "a_card",
+        "misc": 0,
+        "upgrades": 1,
+    }
