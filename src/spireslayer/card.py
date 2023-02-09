@@ -1,3 +1,5 @@
+
+
 class Card(object):
     STRIKE = "Strike_B"
     DEFEND = "Defend_B"

@@ -1,5 +1,5 @@
-from decks import defect_frost_deck
-from editor import SaveEditor
+from spireslayer.template import defect_frost_deck
+from spireslayer.save_editor import SaveEditor
 
 
 if __name__ == '__main__':

@@ -3,8 +3,8 @@ import datetime
 import json
 import os
 
-from card import Card
-from decks import Deck
+from .card import Card
+from .decks import Deck
 
 
 class SaveEditor(object):
