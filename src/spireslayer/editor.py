@@ -6,7 +6,7 @@ import os
 from card import Card
 
 
-class SaveEditor():
+class SaveEditor(object):
     def __init__(self, root_path) -> None:
         super().__init__()
         self.root_path = root_path
@@ -45,14 +45,8 @@ class SaveEditor():
             new_save_data = self.json_to_save()
             save_file.write(new_save_data)
 
-    def base64_encode(self, string):
-        return base64.b64encode(string)
-
-    def base64_decode(self, string) -> bytes:
-        return base64.b64decode(string)
-
     def save_to_json(self) -> dict:
-        base64_decoded_save_file: bytes = self.base64_decode(self.encoded_save_data)
+        base64_decoded_save_file: bytes = base64.b64decode(self.encoded_save_data)
         json_char_list: list = list()
 
         for i, obfuscated_data in enumerate(base64_decoded_save_file):
@@ -75,7 +69,7 @@ class SaveEditor():
             xor_result: int = ord(plain_data) ^ ord(self.key[modulus_index])
             decoded_char_list.append(xor_result)
 
-        final_data = self.base64_encode(bytes(decoded_char_list))
+        final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
     def update_current_health(self, health: int = 500):

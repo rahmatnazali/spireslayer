@@ -3,7 +3,7 @@ from typing import Optional
 from card import Card
 
 
-class Deck():
+class Deck(object):
     def __init__(self, card_list: Optional[list] = None) -> None:
         super().__init__()
 
