@@ -1,5 +1,4 @@
 import base64
-import datetime
 import json
 import os
 
@@ -27,7 +26,7 @@ class SaveEditor(object):
 
     def find_autosave_file(self):
         assert self.root_path is not None, "Root path is None"
-        possible_save_files = os.listdir((self.root_path))
+        possible_save_files = os.listdir(self.root_path)
         for filename in possible_save_files:
             if filename.endswith('.autosave'):
                 return os.path.join(self.root_path, filename)
