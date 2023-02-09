@@ -21,8 +21,10 @@ class SaveEditor(object):
         with open(dump_filename, "w") as current_save_file:
             current_save_file.write(json.dumps(self.json_save_data, indent=2, sort_keys=True))
 
-    @property
-    def json(self):
+    def set_json(self, json_dict: dict):
+        self.json_save_data = json_dict
+
+    def get_json(self) -> dict:
         return self.json_save_data
 
     def find_autosave_file(self):
@@ -74,25 +76,25 @@ class SaveEditor(object):
 
     def update_current_health(self, health: int = 500):
         self.json_save_data['current_health'] = health
-        assert self.json.get('current_health') == health
+        assert self.get_json().get('current_health') == health
 
     def update_max_health(self, health: int = 500):
         self.json_save_data['max_health'] = health
-        assert self.json.get('max_health') == health
+        assert self.get_json().get('max_health') == health
 
     def update_max_orbs(self, max_orbs: int = 10):
         self.json_save_data['max_orbs'] = max_orbs
-        assert self.json.get('max_orbs') == max_orbs
+        assert self.get_json().get('max_orbs') == max_orbs
 
     def update_hand_size(self, hand_size: int = 10):
         self.json_save_data['hand_size'] = hand_size
-        assert self.json.get('hand_size') == hand_size
+        assert self.get_json().get('hand_size') == hand_size
 
     def update_energy_per_turn(self, red: int = 20):
         self.json_save_data['red'] = red
-        assert self.json.get('red') == red
+        assert self.get_json().get('red') == red
 
-    def set_deck(self, deck):
+    def set_deck(self, deck: Deck):
         self.json_save_data["cards"] = deck.to_json()
 
     def add_card(self, card: Card):
