@@ -73,19 +73,15 @@ class SaveEditor(object):
 
     def update_current_health(self, health: int = 500):
         self.json_save_data['current_health'] = health
-        assert self.get_json().get('current_health') == health
 
     def update_max_health(self, health: int = 500):
         self.json_save_data['max_health'] = health
-        assert self.get_json().get('max_health') == health
 
     def update_max_orbs(self, max_orbs: int = 10):
         self.json_save_data['max_orbs'] = max_orbs
-        assert self.get_json().get('max_orbs') == max_orbs
 
     def update_hand_size(self, hand_size: int = 10):
         self.json_save_data['hand_size'] = hand_size
-        assert self.get_json().get('hand_size') == hand_size
 
     def update_energy_per_turn(self, red: int = 20):
         self.json_save_data['red'] = red
