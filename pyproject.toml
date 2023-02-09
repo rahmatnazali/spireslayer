@@ -1,0 +1,51 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spireslayer"
+version = "0.0.1"
+keywords = ["slay-the-spire", "slay", "spire", "save", "editor"]
+authors = [
+  { name="Rahmat Nazali Salimi", email="rahmatnazali95@gmail.com" },
+]
+maintainers = [
+  { name="Rahmat Nazali Salimi", email="rahmatnazali95@gmail.com" },
+]
+description = "Save file editor for Slay the Spire"
+readme = "README-PYPI.md"
+requires-python = ">=3.8.10"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Games/Entertainment"
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/rahmatnazali/spireslayer"
+"Bug Tracker" = "https://github.com/rahmatnazali/spireslayer/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["spireslayer"]
+exclude = [
+    ".github",
+    "assets",
+    "backups",
+    "example",
+    "venv"
+]
+namespaces = false
