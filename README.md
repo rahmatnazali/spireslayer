@@ -66,11 +66,18 @@ save_editor.write_json_to_file()
 
 ## Note
 
-Currently, there are only configuration for The Defect. 
-But actually if you can already see the save data in JSON you can change anything you want, 
-so feel free to modify the code and add your own preference!
+Currently, the package only supports The Defect.
+For other character, you can create the method yourself (PR is greatly appreciated!) or alternatively use the provided API `SaveEditor.get_json()` to get the JSON formatted save file,  change the JSON directly, and assign it back with the provided API `SaveEditor.set_json()`. For example:
 
-Again, refer to the [example of the save file](example/readable_save_file.json). It is really just a simple JSON edit.
+```python
+editor = SaveEditor(...)
+
+save_file = editor.get_json()
+save_file['current_health'] = 1000
+editor.set_json(save_file)
+```
+
+Refer to the [save file example](example/readable_save_file.json) for more example.
 
 ## Disclaimer
 
