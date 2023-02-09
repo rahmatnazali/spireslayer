@@ -30,7 +30,7 @@ class SaveEditor(object):
         for filename in possible_save_files:
             if filename.endswith('.autosave'):
                 return os.path.join(self.root_path, filename)
-        raise ValueError("No .autosave file found")
+        raise ValueError(f"No .autosave file found on {self.root_path}")
 
     def load_encoded_save_data_from_file(self):
         with open(self.save_file_path, 'r') as save_file:
