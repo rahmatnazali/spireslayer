@@ -16,9 +16,9 @@ too much time to be wasted.
 - Edit the `main.py` as you need. You can change your health, build your own deck, etc. For example:
 
 ```python
-from editor import SaveEditor
-from decks import Deck
-from card import Card
+from spireslayer.save_editor import SaveEditor
+from spireslayer.decks import Deck
+from spireslayer.card import Card
 
 # Declare a valid path to the save folder
 save_file_path = "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves"
@@ -70,6 +70,8 @@ Currently, the package only supports The Defect.
 For other character, you can create the method yourself (PR is greatly appreciated!) or alternatively use the provided API `SaveEditor.get_json()` to get the JSON formatted save file,  change the JSON directly, and assign it back with the provided API `SaveEditor.set_json()`. For example:
 
 ```python
+from spireslayer.save_editor import SaveEditor
+
 editor = SaveEditor(...)
 
 save_file = editor.get_json()
