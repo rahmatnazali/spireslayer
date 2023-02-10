@@ -39,7 +39,7 @@ class SaveEditor(object):
             return content
 
     def write_json_to_file(self):
-        print(f"Writing edited save data to {self.save_file_path}")
+        print(f"Writing new save data to {self.save_file_path}")
         with open(self.save_file_path, 'wb') as save_file:
             new_save_data = self.json_to_save()
             save_file.write(new_save_data)
