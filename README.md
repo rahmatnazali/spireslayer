@@ -1,24 +1,28 @@
 [Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) _faster_ by editing the save file! If done right, this will keep the fun while avoiding 
 too much time to be wasted.
 
+![](assets/result-2.jpg)
+![](assets/result-1.jpg)
+
 ## How the script works
-- It starts by finding an autosave file, usually named with this format: `<Name of the character>.autosave`, for example [DEFECT.autosave](example/DEFECT.autosave).
-- It will then try to decrypt the save data and convert it to both readable and editable JSON object format [like so](example/readable_save_file.json).
-- Edit the json object as needed.
-- The script will then write it back to the obfuscated autosave file format
+- It starts by finding the obfuscated autosave file that named with this format: `<Name of the character>.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
+- The `SaveEditor` object will decrypt the save data and convert it to an editable JSON object format [like this](example/readable_save_file.json).
+- You can edit the json object as needed.
+- Call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format and replace the old one
 
-## Usage
+## How to use the package
 
-### 1. Customize your save file
+Install the package with `pip install spireslayer`.
 
-- Install python3 
-- Inside `main.py`, change the `save_file_path` according to your game installation so that it points to the *root path* of the autosave file. On Windows default, it will usually be `C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves`
-- Edit the `main.py` as you need. You can change your health, build your own deck, etc. For example:
+### 1. Creating your own save file editor
+
+Create your own script as needed, for example:
 
 ```python
 from spireslayer.save_editor import SaveEditor
 from spireslayer.decks import Deck
 from spireslayer.card import Card
+from spireslayer.templates.defect_card import GLACIER, DEFRAGMENT, BLIZZARD
 
 # Declare a valid path to the save folder
 save_file_path = "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves"
@@ -29,40 +33,38 @@ save_editor = SaveEditor(save_file_path)
 # Edit whatever you want.
 # here we are making our custom powerful deck for our Defect
 save_editor.set_deck(Deck([
-    Card(Card.GLACIER),
-    Card(Card.GLACIER),
-    Card(Card.GLACIER),
-    Card(Card.DEFRAGMENT),
-    Card(Card.DEFRAGMENT),
-    Card(Card.DEFRAGMENT),
-    Card(Card.BLIZZARD),
-    Card(Card.BLIZZARD),
-    Card(Card.BLIZZARD),
-    Card(Card.BLIZZARD),
-    Card(Card.BLIZZARD),
+    Card(GLACIER),
+    Card(GLACIER),
+    Card(GLACIER),
+    Card(DEFRAGMENT),
+    Card(DEFRAGMENT),
+    Card(DEFRAGMENT),
+    Card(BLIZZARD),
+    Card(BLIZZARD),
+    Card(BLIZZARD),
+    Card(BLIZZARD),
+    Card(BLIZZARD),
 ]))
 
-# or increase our Defect's max orb
-save_editor.update_max_orbs()
+# or maybe increase our Defect's max orb
+save_editor.update_max_orbs(15)
 
 # or anything that can be adjustable to your need
-save_editor.update_current_health()
-save_editor.update_max_health()
-save_editor.update_hand_size()
-save_editor.update_energy_per_turn()
+save_editor.update_current_health(400)
+save_editor.update_max_health(500)
+save_editor.update_hand_size(10)
+save_editor.update_energy_per_turn(20)
 
-# After customization is finished, don't forget call this method to rewrite the save data back to where it belongs
+# After customization is finished, call this method to rewrite the save data back to the original place. The old save file will be replaced.
 save_editor.write_json_to_file()
 ```
 
-### 2. Applying the save file
+### 2. Running the save file editor
 
-- Open the game, you can create a new game or continue. On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
-- From the main menu (no need to close the game), run your script.
-- Back to your game and click `Continue`. Enjoy!
-
-![](assets/result-1.jpg)
-![](assets/result-2.jpg)
+- Open the game. You can create a new game or continue your session. 
+- On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
+- From the main menu, switch back to your script and run it. You don't need to close the game.
+- Back to your game and click `Continue`. Enjoy the game!
 
 ## Note
 
@@ -79,7 +81,7 @@ save_file['current_health'] = 1000
 editor.set_json(save_file)
 ```
 
-Refer to the [save file example](example/readable_save_file.json) for more example.
+Refer to the [readable save file example](example/readable_save_file.json) for more example.
 
 ## Disclaimer
 
