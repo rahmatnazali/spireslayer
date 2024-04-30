@@ -31,7 +31,7 @@ save_file_path = "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\sav
 save_editor = SaveEditor(save_file_path)
 
 # Edit whatever you want.
-# here we are making our custom powerful deck for our Defect
+# here we are making custom powerful deck for our Defect
 save_editor.set_deck(Deck([
     Card(GLACIER),
     Card(GLACIER),
@@ -55,7 +55,8 @@ save_editor.update_max_health(500)
 save_editor.update_hand_size(10)
 save_editor.update_energy_per_turn(20)
 
-# After customization is finished, call this method to rewrite the save data back to the original place. The old save file will be replaced.
+# After customization is finished, call this method to rewrite the save data back to the original place.
+# The old save file will be replaced.
 save_editor.write_json_to_file()
 ```
 
