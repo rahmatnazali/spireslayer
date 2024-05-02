@@ -86,4 +86,4 @@ Refer to the [readable save file example](example/readable_save_file.json) for m
 
 ## Disclaimer
 
-I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. What I did was only re-write it in python and added some feature so that the save data can be programmatically edited.
+I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. What I did was only rewriting it in python and adding features so that the save data can be programmatically edited.
