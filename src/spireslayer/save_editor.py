@@ -8,7 +8,7 @@ from .decks import Deck
 
 class SaveEditor(object):
     def __init__(self,
-                 save_file_path: str = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\saves",
+                 save_file_path: str = "/path/to/save/folder",
                  key: str = "key"
                  ) -> None:
         super().__init__()
@@ -71,19 +71,19 @@ class SaveEditor(object):
         final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
-    def update_current_health(self, health: int = 500):
+    def update_current_health(self, health: int = 72):
         self.json_save_data['current_health'] = health
 
-    def update_max_health(self, health: int = 500):
+    def update_max_health(self, health: int = 72):
         self.json_save_data['max_health'] = health
 
-    def update_max_orbs(self, max_orbs: int = 10):
+    def update_max_orbs(self, max_orbs: int = 0):
         self.json_save_data['max_orbs'] = max_orbs
 
-    def update_hand_size(self, hand_size: int = 10):
+    def update_hand_size(self, hand_size: int = 5):
         self.json_save_data['hand_size'] = hand_size
 
-    def update_energy_per_turn(self, red: int = 20):
+    def update_energy_per_turn(self, red: int = 3):
         self.json_save_data['red'] = red
         assert self.get_json().get('red') == red
 
