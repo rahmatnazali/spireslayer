@@ -24,11 +24,10 @@ from spireslayer.decks import Deck
 from spireslayer.card import Card
 from spireslayer.templates.defect_card import GLACIER, DEFRAGMENT, BLIZZARD
 
-# Declare a valid path to the save folder
-save_file_path = "C:\Program Files (x86)\Steam\steamapps\common\SlayTheSpire\saves"
-
-# Declare a save editor that points to the save_file path
-save_editor = SaveEditor(save_file_path)
+# Declare a save editor that points to the path of your root game installation
+save_editor = SaveEditor(
+    installation_path="C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
+)
 
 # Edit whatever you want.
 # here we are making custom powerful deck for our Defect
@@ -55,34 +54,48 @@ save_editor.update_max_health(500)
 save_editor.update_hand_size(10)
 save_editor.update_energy_per_turn(20)
 
+# for attributes that are not yet provided within the package, you can use the generic update_attribute method
+# you can find the key for each attribute in the example JSON save file provided in  this project
+save_editor.update_attribute('current_health', 90)
+save_editor.update_attribute('hand_size', 10)
+
 # After customization is finished, call this method to rewrite the save data back to the original place.
-# The old save file will be replaced.
+# WARNING: The old save file will be replaced.
 save_editor.write_json_to_file()
 ```
 
 ### 2. Running the save file editor
 
-- Open the game. You can create a new game or continue your session. 
+- Open the game. Create a new game or continue any session. 
 - On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
-- From the main menu, switch back to your script and run it. You don't need to close the game.
-- Back to your game and click `Continue`. Enjoy the game!
+- From the main menu, switch back to the script and run it. Closing the game is unnecessary.
+- Switch back to the game and click `Continue`. Enjoy the game!
 
-## Note
+## Notes
+- This package now supports Colorless Card, and nearly all 4 playable hero's cards (thanks [@gabrekt](https://github.com/gabrekt)!).
+- There is a [know issue](https://github.com/rahmatnazali/spireslayer/issues/13) with the Watcher's Rushdown Card not being correctly recognized.
+- For any change that are not yet supported within the package, please use the provided API `SaveEditor.get_json()` and 
+change it directly.
+For example:
 
-Currently, the package only supports The Defect.
-For other character, you can create the method yourself (PR is greatly appreciated!) or alternatively use the provided API `SaveEditor.get_json()` to get the JSON formatted save file,  change the JSON directly, and assign it back with the provided API `SaveEditor.set_json()`. For example:
+    ```python3
+    from spireslayer.save_editor import SaveEditor
+    
+    save_editor = SaveEditor()
+    
+    save_file = save_editor.get_json()
+    save_file['current_health'] = 1000
+    save_file['...'] = 'something-something'
+    
+    # don't forget to give it back to the save_editor
+    save_editor.set_json(save_file)
+    
+    save_editor.write_json_to_file()
+    ```
 
-```python
-from spireslayer.save_editor import SaveEditor
+    Refer to the [readable save file example](example/readable_save_file.json) for more available keys.
 
-editor = SaveEditor(...)
-
-save_file = editor.get_json()
-save_file['current_health'] = 1000
-editor.set_json(save_file)
-```
-
-Refer to the [readable save file example](example/readable_save_file.json) for more example.
+- PR is always appreciated!
 
 ## Disclaimer
 
