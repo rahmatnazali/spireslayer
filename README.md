@@ -8,7 +8,7 @@ too much time to be wasted.
 - It starts by finding the obfuscated autosave file that named with this format: `<Name of the character>.autosave`. For example, see [DEFECT.autosave](example/DEFECT.autosave).
 - The `SaveEditor` object will decrypt the save data and convert it to an editable [JSON object format](example/readable_save_file.json).
 - At this point, you can edit the json object as needed.
-- Finally, call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format, replacing the old one
+- Finally, call the `SaveEditor.write_json_to_file()` and the script will write the modified save file back to the obfuscated save file format, replacing the old one.
 
 ## How to use the package
 
