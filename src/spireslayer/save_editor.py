@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+from typing import Optional
 
 from .card import Card
 from .decks import Deck
@@ -8,11 +9,17 @@ from .decks import Deck
 
 class SaveEditor(object):
     def __init__(self,
-                 save_file_path: str = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\saves",
+                 installation_path: str = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
+                 save_folder_name: Optional[str] = "saves",
                  key: str = "key"
                  ) -> None:
         super().__init__()
-        self.root_path = save_file_path
+
+        if save_folder_name is not None:
+            self.path = f"{installation_path}\\{save_folder_name}"
+        else:
+            self.path = installation_path
+
         self.key = key
         self.save_file_path = self.find_autosave_file()
         self.encoded_save_data: str = self.load_encoded_save_data_from_file()
@@ -25,12 +32,12 @@ class SaveEditor(object):
         return self.json_save_data
 
     def find_autosave_file(self):
-        assert self.root_path is not None, "Root path is None"
-        possible_save_files = os.listdir(self.root_path)
+        assert os.path.isdir(self.path), f"Path {self.path} doesn't exist"
+        possible_save_files = os.listdir(self.path)
         for filename in possible_save_files:
             if filename.endswith('.autosave'):
-                return os.path.join(self.root_path, filename)
-        raise ValueError(f"No .autosave file found on {self.root_path}")
+                return os.path.join(self.path, filename)
+        raise ValueError(f"No .autosave file found on {self.path}")
 
     def load_encoded_save_data_from_file(self):
         with open(self.save_file_path, 'r') as save_file:

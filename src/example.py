@@ -3,8 +3,9 @@ from spireslayer.save_editor import SaveEditor
 
 
 if __name__ == '__main__':
-    save_file_path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\saves"
-    save_editor = SaveEditor(save_file_path=save_file_path)
+    save_editor = SaveEditor(
+        installation_path="C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
+    )
 
     # In here, you can do whatever you want on your save file
     save_editor.update_current_health()

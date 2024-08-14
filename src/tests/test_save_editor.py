@@ -4,14 +4,14 @@ from spireslayer.save_editor import SaveEditor
 
 
 def test_initialization():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_save_file = save_editor.get_json()
     assert len(original_save_file) == 112
     assert save_editor.key == "key"
 
 
 def test_set_json():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_save_file = save_editor.get_json()
     new_save_file = {}
     save_editor.set_json(new_save_file)
@@ -21,7 +21,7 @@ def test_set_json():
 
 
 def test_update_current_health():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_health = save_editor.get_json()['current_health']
     assert original_health == 500
     save_editor.update_current_health(100)
@@ -31,7 +31,7 @@ def test_update_current_health():
 
 
 def test_update_max_health():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_max_health = save_editor.get_json()['max_health']
     assert original_max_health == 500
     save_editor.update_max_health(100)
@@ -41,7 +41,7 @@ def test_update_max_health():
 
 
 def test_update_max_orbs():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_max_orbs = save_editor.get_json()['max_orbs']
     assert original_max_orbs == 10
     save_editor.update_max_orbs(15)
@@ -51,7 +51,7 @@ def test_update_max_orbs():
 
 
 def test_update_hand_size():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_hand_size = save_editor.get_json()['hand_size']
     assert original_hand_size == 10
     save_editor.update_hand_size(15)
@@ -61,7 +61,7 @@ def test_update_hand_size():
 
 
 def test_update_energy_per_turn():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     original_energy_per_turn = save_editor.get_json()['red']
     assert original_energy_per_turn == 20
     save_editor.update_energy_per_turn(30)
@@ -71,7 +71,7 @@ def test_update_energy_per_turn():
 
 
 def test_set_deck():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     deck = Deck([
         Card("1"),
         Card("2"),
@@ -83,7 +83,7 @@ def test_set_deck():
 
 
 def test_add_card():
-    save_editor = SaveEditor(save_file_path="tests")
+    save_editor = SaveEditor(installation_path="tests", save_folder_name=None)
     deck = Deck([
         Card("1"),
         Card("2"),
