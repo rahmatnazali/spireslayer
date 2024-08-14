@@ -16,7 +16,7 @@ class SaveEditor(object):
         super().__init__()
 
         if save_folder_name is not None:
-            self.path = f"{installation_path}\\{save_folder_name}"
+            self.path = os.path.join(installation_path, save_folder_name)
         else:
             self.path = installation_path
 
