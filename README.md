@@ -12,25 +12,54 @@ too much time to be wasted.
 
 ## How to use the package
 
+### 1. Install & Identify
+
 Install the package with `pip install spireslayer`.
 
-### 1. Creating your own save file editor
+Identify your game installation path.
 
-Create your own script as needed, for example:
+This package assumes the Steam default installation on Windows: `C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire`.
+
+If your installation happened to be using the default, then you don't need to pass any arguments when calling the `SaveEditor`. 
+The package will handle it for you:
+
+```python3
+from spireslayer.save_editor import SaveEditor
+
+save_editor = SaveEditor()
+```
+
+For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` class:
+
+```python3
+from spireslayer.save_editor import SaveEditor
+
+# custom Windows path
+save_editor = SaveEditor(
+    installation_path="D:\\MyGames\\SlayTheSpire",
+)
+
+# or linux path
+save_editor = SaveEditor(
+    installation_path="/home/rahmat/.steam/debian-installation/steamapps/common/SlayTheSpire",
+)
+```
+
+### 2. Creating your own save file editor
+
+Create your own editor behavior by importing the `SaveEditor` to your python script:
 
 ```python
+# defect_editor.py
+
 from spireslayer.save_editor import SaveEditor
 from spireslayer.decks import Deck
 from spireslayer.card import Card
 from spireslayer.templates.defect_card import GLACIER, DEFRAGMENT, BLIZZARD
 
-# Declare a save editor that points to the path of your root game installation
-save_editor = SaveEditor(
-    installation_path="C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
-)
+save_editor = SaveEditor()
 
-# Edit whatever you want.
-# here we are making custom powerful deck for our Defect
+# let's start by creating a custom powerful deck for our Defect
 save_editor.set_deck(Deck([
     Card(GLACIER),
     Card(GLACIER),
@@ -48,14 +77,14 @@ save_editor.set_deck(Deck([
 # or maybe increase our Defect's max orb
 save_editor.update_max_orbs(15)
 
-# or anything that can be adjusted to your need
+# or basically anything you need
 save_editor.update_current_health(400)
 save_editor.update_max_health(500)
 save_editor.update_hand_size(10)
 save_editor.update_energy_per_turn(20)
 
-# for attributes that are not yet provided within the package, you can use the generic update_attribute method
-# you can find the key for each attribute in the example JSON save file provided in  this project
+# for attributes that are not yet provided within the package's method, you can use the generic update_attribute method
+# you can find the key for each attribute in the example JSON save file provided in this project
 save_editor.update_attribute('current_health', 90)
 save_editor.update_attribute('hand_size', 10)
 
@@ -64,12 +93,13 @@ save_editor.update_attribute('hand_size', 10)
 save_editor.write_json_to_file()
 ```
 
-### 2. Running the save file editor
+### 3. Running the save file editor
 
 - Open the game. Create a new game or continue any session. 
 - On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
-- From the main menu, switch back to the script and run it. Closing the game is unnecessary.
-- Switch back to the game and click `Continue`. Enjoy the game!
+- From the main menu, switch to the script and run it. Closing the game is actually unnecessary.
+- Switch back to the game and click `Continue`. 
+- Enjoy the game!
 
 ## Notes
 - This package now supports Colorless Card, and nearly all 4 playable hero's cards (thanks [@gabrekt](https://github.com/gabrekt)!).
