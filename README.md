@@ -45,7 +45,7 @@ save_editor = SaveEditor(
 )
 ```
 
-### 2. Creating your own save file editor
+### 2. Create your editor script
 
 Create your own editor behavior by importing the `SaveEditor` to your python script:
 
@@ -93,7 +93,7 @@ save_editor.update_attribute('hand_size', 10)
 save_editor.write_json_to_file()
 ```
 
-### 3. Running the save file editor
+### 3. Run the editor
 
 - Open the game. Create a new game or continue any session. 
 - On the first encounter after loading the game, hit the menu and choose `Save & Quit`.
