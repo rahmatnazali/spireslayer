@@ -1,7 +1,7 @@
 import base64
 import json
 import os
-from typing import Optional
+from typing import Optional, Union
 
 from .card import Card
 from .decks import Deck
@@ -78,24 +78,26 @@ class SaveEditor(object):
         final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
+    def update_attribute(self, attribute_name: str, value: Union[int, str]) -> None:
+        self.json_save_data[attribute_name] = value
+
     def update_current_health(self, health: int = 72):
-        self.json_save_data['current_health'] = health
+        self.update_attribute('current_health', health)
 
     def update_max_health(self, health: int = 72):
-        self.json_save_data['max_health'] = health
+        self.update_attribute('max_health', health)
 
-    def update_max_orbs(self, max_orbs: int = 0):
-        self.json_save_data['max_orbs'] = max_orbs
+    def update_max_orbs(self, max_orbs: int = 3):
+        self.update_attribute('max_orbs', max_orbs)
 
     def update_hand_size(self, hand_size: int = 5):
-        self.json_save_data['hand_size'] = hand_size
+        self.update_attribute('hand_size', hand_size)
 
-    def update_energy_per_turn(self, red: int = 3):
-        self.json_save_data['red'] = red
-        assert self.get_json().get('red') == red
+    def update_energy_per_turn(self, energy: int = 3):
+        self.update_attribute('red', energy)
 
     def set_deck(self, deck: Deck):
-        self.json_save_data["cards"] = deck.to_json()
+        self.update_attribute('cards', deck.to_json())
 
     def add_card(self, card: Card):
-        self.json_save_data["cards"].append(card.to_json())
+        self.json_save_data['cards'].append(card.to_json())
