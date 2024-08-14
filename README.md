@@ -115,7 +115,7 @@ For example:
     
     save_file = save_editor.get_json()
     save_file['current_health'] = 1000
-    save_file['...'] = 'something-something'
+    save_file['some-key'] = 'something-something'
     
     # don't forget to give it back to the save_editor
     save_editor.set_json(save_file)
@@ -129,4 +129,5 @@ For example:
 
 ## Disclaimer
 
-I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. What I did was only rewriting it in python and adding features so that the save data can be programmatically edited.
+I got the save file encryption logic from [Kirill89's gist](https://gist.github.com/Kirill89/514edad0ac80af7dfc036871ccf0f877) written in JS. 
+What I did was only rewriting it in python and adding modularity of the save editor.
