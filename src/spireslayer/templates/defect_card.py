@@ -1,3 +1,6 @@
+# Card for The Defect (Blue)
+
+
 STRIKE = "Strike_B"
 DEFEND = "Defend_B"
 

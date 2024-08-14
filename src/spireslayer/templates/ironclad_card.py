@@ -1,5 +1,5 @@
-# ironclad_card.py
-# Also red cards.
+# Card for Ironclad (Red)
+
 
 # Starter Cards
 BASH = "Bash"

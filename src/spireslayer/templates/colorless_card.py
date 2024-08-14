@@ -1,5 +1,5 @@
+# Colorless Cards
 
-# colorless_cards.py
 
 # Uncommon Cards
 BANDAGE_UP = "Bandage Up"

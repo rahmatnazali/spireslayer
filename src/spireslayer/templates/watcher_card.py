@@ -1,4 +1,5 @@
-# watcher_cards.py
+# Card for The Watcher (Purple)
+
 
 # Starter Cards
 DEFEND_W = "Defend"
@@ -47,7 +48,7 @@ NIRVANA = "Nirvana"
 PERSEVERANCE = "Perseverance"
 PRAY = "Pray"
 REACH_HEAVEN = "Reach Heaven"
-RUSHDOWN = "Rushdown"
+RUSHDOWN = "Rushdown"  # Known issue: https://github.com/rahmatnazali/spireslayer/issues/13
 SANCTITY = "Sanctity"
 SANDS_OF_TIME = "Sands of Time"
 SIGNATURE_MOVE = "Signature Move"

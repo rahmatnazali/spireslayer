@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+from typing import Optional, Union
 
 from .card import Card
 from .decks import Deck
@@ -8,11 +9,17 @@ from .decks import Deck
 
 class SaveEditor(object):
     def __init__(self,
-                 save_file_path: str = "/path/to/save/folder",
+                 installation_path: Optional[str] = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire",
+                 save_folder_name: Optional[str] = "saves",
                  key: str = "key"
                  ) -> None:
         super().__init__()
-        self.root_path = save_file_path
+
+        if save_folder_name is not None:
+            self.path = os.path.join(installation_path, save_folder_name)
+        else:
+            self.path = installation_path
+
         self.key = key
         self.save_file_path = self.find_autosave_file()
         self.encoded_save_data: str = self.load_encoded_save_data_from_file()
@@ -25,12 +32,12 @@ class SaveEditor(object):
         return self.json_save_data
 
     def find_autosave_file(self):
-        assert self.root_path is not None, "Root path is None"
-        possible_save_files = os.listdir(self.root_path)
+        assert os.path.isdir(self.path), f"Path {self.path} doesn't exist"
+        possible_save_files = os.listdir(self.path)
         for filename in possible_save_files:
             if filename.endswith('.autosave'):
-                return os.path.join(self.root_path, filename)
-        raise ValueError(f"No .autosave file found on {self.root_path}")
+                return os.path.join(self.path, filename)
+        raise ValueError(f"No .autosave file found on {self.path}")
 
     def load_encoded_save_data_from_file(self):
         with open(self.save_file_path, 'r') as save_file:
@@ -71,24 +78,26 @@ class SaveEditor(object):
         final_data = base64.b64encode(bytes(decoded_char_list))
         return final_data
 
+    def update_attribute(self, attribute_name: str, value: Union[int, str]) -> None:
+        self.json_save_data[attribute_name] = value
+
     def update_current_health(self, health: int = 72):
-        self.json_save_data['current_health'] = health
+        self.update_attribute('current_health', health)
 
     def update_max_health(self, health: int = 72):
-        self.json_save_data['max_health'] = health
+        self.update_attribute('max_health', health)
 
-    def update_max_orbs(self, max_orbs: int = 0):
-        self.json_save_data['max_orbs'] = max_orbs
+    def update_max_orbs(self, max_orbs: int = 3):
+        self.update_attribute('max_orbs', max_orbs)
 
     def update_hand_size(self, hand_size: int = 5):
-        self.json_save_data['hand_size'] = hand_size
+        self.update_attribute('hand_size', hand_size)
 
-    def update_energy_per_turn(self, red: int = 3):
-        self.json_save_data['red'] = red
-        assert self.get_json().get('red') == red
+    def update_energy_per_turn(self, energy: int = 3):
+        self.update_attribute('red', energy)
 
     def set_deck(self, deck: Deck):
-        self.json_save_data["cards"] = deck.to_json()
+        self.update_attribute('cards', deck.to_json())
 
     def add_card(self, card: Card):
-        self.json_save_data["cards"].append(card.to_json())
+        self.json_save_data['cards'].append(card.to_json())

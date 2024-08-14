@@ -2,10 +2,7 @@ from spireslayer.card import Card
 from spireslayer.decks import Deck
 from spireslayer.templates.silent_card import *
 
-
-#Poison deck
-
-poison = Deck([
+poison_deck = Deck([
     Card(BOUNCING_FLASK),
     Card(BOUNCING_FLASK),
     Card(BOUNCING_FLASK),
@@ -23,10 +20,7 @@ poison = Deck([
     Card(CALTROPS)
 ])
 
-#Shiv
-
-
-shiv_and_draw = Deck([
+shiv_and_draw_deck = Deck([
     Card(ACCURACY),
     Card(ACCURACY),
     Card(ACCURACY),
