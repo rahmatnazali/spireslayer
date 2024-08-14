@@ -1,11 +1,8 @@
 from spireslayer.card import Card
 from spireslayer.decks import Deck
 from spireslayer.templates.ironclad_card import *
-from spireslayer.templates.colorless_card import INSIGHT, FLASH_OF_STEEL
 
-#Strenght focus deck
-
-strenght_focus = Deck([
+strength_focus_deck = Deck([
     Card(FLEX),
     Card(FLEX),
     Card(INFLAME),
@@ -20,7 +17,7 @@ strenght_focus = Deck([
     Card(HEAVY_BLADE)
 ])
 
-bodyslam = Deck([
+body_slam_deck = Deck([
     Card(BARRICADE),
     Card(ENTRENCH),
     Card(BODY_SLAM),

@@ -1,5 +1,3 @@
-
-
 class Card(object):
     def __init__(self, id: str, misc: int = 0, upgrades: int = 1) -> None:
         super().__init__()

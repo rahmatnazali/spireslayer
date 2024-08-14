@@ -1,6 +1,4 @@
-#Silent_card.py
-
-#Green cards
+# Card for Silent (Green)
 
 
 # Starter Cards

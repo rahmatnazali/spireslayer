@@ -1,9 +1,7 @@
 from spireslayer.card import Card
 from spireslayer.decks import Deck
 from spireslayer.templates.watcher_card import *
-from spireslayer.templates.colorless_card import INSIGHT, MADNESS, FLASH_OF_STEEL
-
-#Infinite decks
+from spireslayer.templates.colorless_card import INSIGHT, FLASH_OF_STEEL
 
 calm_and_neutral = Deck([
     Card(INNER_PEACE),
@@ -23,7 +21,7 @@ calm_and_wrath = Deck([
 divinity_and_wrath = Deck([
     Card(PRAY),
     Card(PROSTRATE),
-    Card(RUSHDOWN), #This card is mistaken for madness. Check data.
+    Card(RUSHDOWN),
     Card(ERUPTION),
     Card(INSIGHT)
 ])
