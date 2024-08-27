@@ -29,7 +29,7 @@ from spireslayer.save_editor import SaveEditor
 save_editor = SaveEditor()
 ```
 
-For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` class:
+For any custom path (e.g. other marketplace or OS), please specify the installation path when initializing the `SaveEditor` object:
 
 ```python3
 from spireslayer.save_editor import SaveEditor
