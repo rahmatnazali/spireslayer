@@ -83,8 +83,9 @@ save_editor.update_max_health(500)
 save_editor.update_hand_size(10)
 save_editor.update_energy_per_turn(20)
 
-# for attributes that are not yet provided within the package's method, you can use the generic update_attribute method
-# you can find the key for each attribute in the example JSON save file provided in this project
+# for attributes that are not yet provided within the package's method,
+# please use the `update_attribute` method.
+# You can find the key for each attribute in the example JSON save file provided in this project
 save_editor.update_attribute('current_health', 90)
 save_editor.update_attribute('hand_size', 10)
 
